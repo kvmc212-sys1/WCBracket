@@ -511,6 +511,21 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
   .champion-spotlight .champ-sub{font-size:9px}
 }
 
+
+/* ===== addon4: abbr (mobile) + compact trophy lane ===== */
+.tn-abbr{display:none}
+@media(max-width:640px){
+  .tn-full{display:none}
+  .tn-abbr{display:inline;font-weight:850}
+  /* little trophy lane: small trophy, no champion box, finals centered */
+  .center-column{align-self:center;min-height:0;background:#fff!important;border-width:1.5px;padding:6px 5px;border-radius:12px;gap:8px;outline:none}
+  .center-column:before,.center-column:after{display:none}
+  .center-column .champion-spotlight{display:none}
+  .center-badge{font-size:0;padding:2px;border:none;background:transparent;box-shadow:none;line-height:1}
+  .center-badge::after{content:"\01F3C6";font-size:22px;line-height:1}
+  .center-match{margin:0}
+}
+
 </style>
 </head>
 <body>
@@ -3311,10 +3326,11 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
     const rowCls = `${isTeam ? "pickable" : ""} ${chosen && isTeam && chosen===e.id ? "winner" : ""}`;
     const flag = isTeam ? flagSvg(e.team) : "";
     const name = isTeam ? e.team.name : e.name;
+    const abbr = isTeam ? ((e.team.code || String(name||"").slice(0,3)).toUpperCase()) : "";
     const sub = isTeam ? e.sub : e.sub;
     return `<div class="team-row ${rowCls}" ${isTeam ? `data-match="${escapeHtml(id)}" data-team="${escapeHtml(e.id)}"` : ""}>
       <span class="seed${seedCls}">${escapeHtml(e.seed || "—")}</span>
-      <div class="team-copy"><div class="team-name">${flag}${escapeHtml(name || "TBD")}</div><div class="team-sub">${escapeHtml(sub || "")}</div></div>
+      <div class="team-copy"><div class="team-name">${flag}<span class="tn-full">${escapeHtml(name || "TBD")}</span>${isTeam?`<span class="tn-abbr">${escapeHtml(abbr)}</span>`:""}</div><div class="team-sub">${escapeHtml(sub || "")}</div></div>
     </div>`;
   }
   function renderFinals(){
