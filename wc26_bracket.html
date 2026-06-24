@@ -2821,7 +2821,8 @@
     simLive: false,
     disc: {},
     permFilter: "all",
-    bracketScale: 1
+    bracketScale: 1,
+    lastPull: null
   };
   let computed = null;
 
@@ -2850,7 +2851,7 @@
       const raw = localStorage.getItem("wc26_refreshable_bracket_state");
       if(!raw) return;
       const saved = JSON.parse(raw);
-      if(saved){ state.disc = saved.disc || {}; state.simLive = !!saved.simLive; state.bracketScale = ([0.75,1,1.25].indexOf(saved.bracketScale)>=0 ? saved.bracketScale : 1); }
+      if(saved){ state.disc = saved.disc || {}; state.simLive = !!saved.simLive; state.bracketScale = ([0.75,1,1.25].indexOf(saved.bracketScale)>=0 ? saved.bracketScale : 1); state.lastPull = saved.lastPull || null; }
       if(saved && Array.isArray(saved.matches)){
         state.matches = saved.matches;
         state.picks = saved.picks || {};
@@ -3045,7 +3046,7 @@
     setStatus(_parts);
   }
   function renderAll(){ renderBoard(); renderEntry(); renderLiveBar(); renderPerms(); }
-  function persist(){ try{ localStorage.setItem("wc26_refreshable_bracket_state", JSON.stringify({matches:state.matches, picks:state.picks, disc:state.disc, simLive:state.simLive, bracketScale:state.bracketScale, savedAt:new Date().toISOString()})); }catch(e){} }
+  function persist(){ try{ localStorage.setItem("wc26_refreshable_bracket_state", JSON.stringify({matches:state.matches, picks:state.picks, disc:state.disc, simLive:state.simLive, bracketScale:state.bracketScale, lastPull:state.lastPull, savedAt:new Date().toISOString()})); }catch(e){} }
   function ord(n){ var s=["th","st","nd","rd"], v=n%100; return n+(s[(v-20)%10]||s[v]||s[0]); }
   function remainingMatches(g){ return state.matches.filter(function(m){return m.g===g && (m.hs==null||m.as==null);}); }
   function playedMatches(g){ return state.matches.filter(function(m){return m.g===g && m.hs!=null && m.as!=null;}); }
@@ -3105,9 +3106,10 @@
   function renderLiveBar(){
     var bar=$("liveBar"); if(!bar) return;
     var live=(state.live||[]).filter(function(x){return x.state==="in";});
+    var lp = state.lastPull ? ("Last pulled "+new Date(state.lastPull).toLocaleString([],{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})) : "Not pulled yet · tap Live";
     var head='<div class="live-head">'+
       (live.length?'<span class="live-badge">LIVE</span><span class="live-count">'+live.length+' in progress</span>'
-                  :'<span class="live-count">No games live right now</span>')+
+                  :'<span class="live-count">'+escapeHtml(lp)+'</span>')+
       '<label class="sim-toggle'+(state.simLive?' on':'')+'"><input type="checkbox" id="simLive"'+(state.simLive?' checked':'')+'> Simulate bracket off current score</label></div>';
     var rows='';
     if(live.length){
@@ -3415,6 +3417,7 @@
       let r = await pullEspn(); let src = "ESPN"; let live = r.live || [];
       if(r.filled===0 && live.length===0){ const w = await pullWiki(); if(w.filled>0){ r = w; src = "Wikipedia"; } else { r = {filled:0, reached: r.reached || w.reached}; } }
       state.live = live;
+      state.lastPull = Date.now();
       const t = new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
       const liveTxt = live.length ? ` \u00b7 ${live.length} live` : "";
       if(r.filled>0){ state.pullStatus = `\u2713 Added ${r.filled} game${r.filled>1?'s':''} from ${src} at ${t}${liveTxt}`; renderAll(); persist(); if(!silent) toast(state.pullStatus); }
