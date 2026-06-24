@@ -526,6 +526,15 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
   .center-match{margin:0}
 }
 
+
+/* ===== addon5: mobile pod lines (color rail + tint per pod) ===== */
+@media(max-width:640px){
+  .podded{background:hsl(var(--ph) 52% 95.5%)!important;border-left:4px solid hsl(var(--ph) 62% 45%)}
+  .podded:before{height:4px}
+  .podded .team-row{background:transparent}
+  .round.right .podded{border-left:none;border-right:4px solid hsl(var(--ph) 62% 45%)}
+}
+
 </style>
 </head>
 <body>
