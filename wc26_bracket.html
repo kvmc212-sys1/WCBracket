@@ -455,6 +455,62 @@
   .pk-gol{font-size:26px}
 }
 
+
+/* ===== addon3: tap responsiveness (all sizes) ===== */
+button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:manipulation;-webkit-tap-highlight-color:rgba(23,50,77,.10)}
+
+/* ===== addon3: mobile buttons + simplified bracket ===== */
+@media(max-width:640px){
+  /* nav: all buttons visible (wrap), real tap targets, tap feedback */
+  .topnav{gap:6px;padding:8px 10px;top:0}
+  .topnav .tn-brand{display:none}
+  .topnav .tn-links{flex-wrap:wrap;overflow:visible}
+  .topnav .tn-links button{flex:1 1 auto;min-height:40px;padding:9px 12px;font-size:12.5px;white-space:nowrap}
+  .topnav .tn-links button:active{background:rgba(255,255,255,.30)}
+
+  /* live bar non-sticky on mobile so the wrapping nav never overlaps it */
+  .live-bar{position:static;top:auto;padding:8px 10px}
+  [id^="sec-"]{scroll-margin-top:100px}
+
+  /* fold + scale + filter + control buttons: bigger, full-width rows, feedback */
+  .control-row{gap:8px}
+  .btn:active{filter:brightness(.96)}
+  .fold-ctrl,.scale-ctrl{flex-wrap:nowrap;width:100%;margin-top:8px}
+  .fold-ctrl .fold-btn,.scale-ctrl .fold-btn{flex:1 1 0;min-height:40px;padding:9px 6px;font-size:12.5px}
+  .fold-btn:active{background:#fff}
+  .perm-filters{width:100%;gap:6px}
+  .perm-filters .pf{flex:1 1 0;min-height:40px;padding:9px 6px;font-size:12.5px}
+  .perm-filters .pf:active{filter:brightness(.95)}
+
+  /* ---- simplified bracket: seed + name + lines, chrome stripped ---- */
+  .album-card{padding:8px;border-width:2px;border-radius:14px;background:#fff}
+  .album-card:before{display:none}
+  .album-bracket{min-width:880px;grid-template-columns:repeat(9,minmax(88px,1fr));gap:7px}
+  .album-bracket.fold-left,.album-bracket.fold-right{min-width:520px;grid-template-columns:repeat(5,minmax(92px,1fr))}
+  .round{min-height:720px;padding:5px 3px;border:none;background:transparent;border-radius:0;gap:6px}
+  .round-title{font-size:8px;padding:3px 6px;letter-spacing:.05em;box-shadow:none;margin-bottom:3px;border-radius:7px}
+  .round:after{width:7px;border-top-width:2px;border-color:rgba(21,87,200,.38)}
+  .round:nth-child(4):after,.round:nth-child(6):after{border-color:rgba(247,184,61,.6)}
+  .match{min-height:0;border-width:1.5px;border-radius:9px;background:#fff!important;box-shadow:0 2px 5px rgba(31,64,98,.13);outline:none;transform:none!important}
+  .round .match:nth-of-type(odd),.round .match:nth-of-type(even),.match:hover{transform:none!important}
+  .match:before{height:3px}
+  .match:after,.match.final:after,.match.third:after{display:none}
+  .m-top{display:none}
+  .team-row{min-height:0;padding:4px 5px;gap:4px;background:transparent;border-top-color:rgba(23,50,77,.10)}
+  .seed{min-width:0;padding:0;border:none;background:transparent!important;box-shadow:none;font-size:9.5px;letter-spacing:0}
+  .seed.third{color:#0a7a4a}.seed.path{color:#9a7a1a}.seed.loser{color:#7a6a9a}
+  .flag{font-size:12px;margin-right:2px}
+  .team-name{font-size:11px;font-weight:800;white-space:normal;line-height:1.12;letter-spacing:-.01em}
+  .team-sub{display:none}
+  .center-column{min-height:720px;padding:7px;border-width:2px;border-radius:12px}
+  .center-column:after{display:none}
+  .center-badge{font-size:9px;padding:6px 9px}
+  .champion-spotlight{padding:9px;border-radius:16px}
+  .champion-spotlight .cup{font-size:24px}
+  .champion-spotlight .champ-name{font-size:15px}
+  .champion-spotlight .champ-sub{font-size:9px}
+}
+
 </style>
 </head>
 <body>
