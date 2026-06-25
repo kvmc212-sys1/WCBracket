@@ -3549,7 +3549,7 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
       else if(!r.reached){ state.pullStatus = `\u2717 Sources unreachable at ${t} (likely a CORS block)`; renderAll(); if(!silent) toast("Live sources could not be reached. Enter scores manually.","warn"); }
       else { state.pullStatus = `No live or new finished games as of ${t}`; renderAll(); if(!silent) toast("Sources reached, nothing new yet.","warn"); }
       if(_liveTimer){ clearTimeout(_liveTimer); _liveTimer=null; }
-      _liveTimer=setTimeout(function(){ pullLive({silent:true}); }, live.length>0 ? 60000 : 180000);
+      _liveTimer=setTimeout(function(){ pullLive({silent:true}); }, live.length>0 ? 60000 : 300000);
     }catch(e){ state.pullStatus = "\u2717 Live pull error"; renderAll(); if(!silent) toast("Live pull error: " + e.message, "err"); }
     finally{ if(btn){ btn.disabled = false; btn.innerHTML = orig; } }
   }
