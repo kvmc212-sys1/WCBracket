@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Live 2026 FIFA World Cup knockout bracket. Results pull automatically from ESPN and Wikipedia, picks simulate the run-in, and team and player stats update as games finish." />
+<meta name="theme-color" content="#dff3ff" />
+<meta property="og:title" content="FIFA World Cup 2026 Live Bracket" />
+<meta property="og:description" content="Auto-updating knockout bracket with picks, team stats, and scorer leaders." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E" />
 <title>FIFA World Cup 2026 Live Bracket</title>
 <style>
 
@@ -188,7 +194,7 @@
   .album-bracket{
     min-width:2060px;
     display:grid;
-    grid-template-columns:282px 268px 252px 242px 328px 242px 252px 268px 282px;
+    grid-template-columns:minmax(282px,1fr) minmax(268px,1fr) minmax(252px,1fr) minmax(242px,1fr) minmax(328px,1.15fr) minmax(242px,1fr) minmax(252px,1fr) minmax(268px,1fr) minmax(282px,1fr);
     gap:16px;
     align-items:stretch;
   }
@@ -258,9 +264,9 @@
   .groups-grid{display:grid;grid-template-columns:repeat(4,minmax(230px,1fr));gap:12px;margin-top:12px}.group-card{border:2px solid #fff;outline:1px solid rgba(23,50,77,.13);border-radius:22px;background:#fff;overflow:hidden;box-shadow:var(--tiny-shadow)}.group-card .g-head{display:flex;justify-content:space-between;align-items:center;padding:11px 13px;background:linear-gradient(90deg,#eaf4ff,#fff8dc);border-bottom:1px dashed rgba(23,50,77,.14)}.g-name{font-weight:1000;letter-spacing:.07em;text-transform:uppercase;font-size:12px;color:#17324d}.g-note{font-family:"SFMono-Regular",Consolas,monospace;color:#7890a7;font-size:11px}.g-team{display:grid;grid-template-columns:34px minmax(0,1fr) 32px 38px;gap:8px;align-items:center;padding:8px 11px;border-top:1px solid rgba(23,50,77,.07);font-size:12px;background:#fffdf8}.g-team:first-of-type{border-top:0}.g-team .pos-badge{font-family:"SFMono-Regular",Consolas,monospace;border:1px solid var(--line2);border-radius:9px;text-align:center;padding:3px 0;color:#607188;font-size:10px;font-weight:1000;background:#f6f9fd}.g-team.top .pos-badge{color:#032d20;background:#d9f8eb;border-color:#90d8b7}.g-team.third.in .pos-badge{background:#fff1bd;border-color:#e3b74c;color:#8a5a00}.g-team.third.out{opacity:.58}.g-team .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:850}.g-team .statnum{font-family:"SFMono-Regular",Consolas,monospace;text-align:right;color:#607188}
   .method{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}.note{border:2px solid #fff;outline:1px solid rgba(23,50,77,.13);border-radius:22px;background:rgba(255,255,255,.78);padding:14px;box-shadow:var(--tiny-shadow)}.note .nh{font-family:"SFMono-Regular",Consolas,monospace;color:var(--blue);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:1000;margin-bottom:6px}.note p{margin:0;color:#5f7186;font-size:13px}
   .toast{position:fixed;right:18px;bottom:18px;max-width:min(480px,calc(100vw - 36px));background:#fff;border:2px solid #fff;outline:1px solid rgba(23,50,77,.18);border-left:7px solid var(--green);color:var(--ink);border-radius:18px;padding:12px 14px;box-shadow:var(--shadow);z-index:20;display:none}.toast.show{display:block}.toast.err{border-left-color:var(--red)}.toast.warn{border-left-color:var(--gold)}.sr-only{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
-  @media(max-width:1240px){.hero-grid,.groups-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.method,.cards-row{grid-template-columns:1fr}.album-bracket{min-width:1780px;grid-template-columns:240px 230px 218px 208px 286px 208px 218px 230px 240px}}
+  @media(max-width:1240px){.hero-grid,.groups-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.method,.cards-row{grid-template-columns:1fr}.album-bracket{min-width:1780px;grid-template-columns:minmax(240px,1fr) minmax(230px,1fr) minmax(218px,1fr) minmax(208px,1fr) minmax(286px,1.15fr) minmax(208px,1fr) minmax(218px,1fr) minmax(230px,1fr) minmax(240px,1fr)}}
   @media(max-width:760px){.wrap{padding:14px 10px 60px}.hero{border-radius:24px}.hero-inner{padding:22px 14px}.hero-grid,.groups-grid{grid-template-columns:1fr}.control-card{border-radius:20px}.btn{width:100%;justify-content:center}.source-input{min-width:100%}.section-head{display:block}.legend{margin-top:10px}.album-card,.table-card,.note{border-radius:20px;padding:12px}.album-header{display:block}.album-fun{margin-top:6px}.album-bracket{min-width:1680px;grid-template-columns:224px 216px 206px 198px 270px 198px 206px 216px 224px}.round{min-height:930px}.team-name{font-size:12.7px}.stat .value{font-size:19px}}
-  @media print{body{background:#fff;color:#111}.topline,.control-card,.editor,.toast,.scroll-tip{display:none!important}.wrap{max-width:none;padding:0}.hero,.album-card,.table-card,.group-card,.note,.match{box-shadow:none;background:#fff;color:#111;outline-color:#999;border-color:#ddd}.hero:before,.hero:after,.album-card:before,.center-column:before,.center-column:after,.match:after{display:none}.album-scroll{overflow:visible}.album-bracket{min-width:0;grid-template-columns:repeat(9,1fr);gap:6px}.round{min-height:760px;padding:5px}.match{min-height:78px}.team-row{padding:5px}.seed,.sample-seed,.g-team .pos-badge{color:#111;background:#f4f4f4;border-color:#bbb}.seed.third,.sample-seed.third{background:#d8fff0;color:#111}.groups-grid{grid-template-columns:repeat(3,1fr)}}
+  @media print{.album-bracket .round{display:flex!important}body{background:#fff;color:#111}.topline,.control-card,.editor,.toast,.scroll-tip{display:none!important}.wrap{max-width:none;padding:0}.hero,.album-card,.table-card,.group-card,.note,.match{box-shadow:none;background:#fff;color:#111;outline-color:#999;border-color:#ddd}.hero:before,.hero:after,.album-card:before,.center-column:before,.center-column:after,.match:after{display:none}.album-scroll{overflow:visible}.album-bracket{min-width:0;grid-template-columns:repeat(9,1fr);gap:6px}.round{min-height:760px;padding:5px}.match{min-height:78px}.team-row{padding:5px}.seed,.sample-seed,.g-team .pos-badge{color:#111;background:#f4f4f4;border-color:#bbb}.seed.third,.sample-seed.third{background:#d8fff0;color:#111}.groups-grid{grid-template-columns:repeat(3,1fr)}}
 
 
   /* ===== inline SVG flags ===== */
@@ -545,8 +551,8 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
 .view-ctrl{display:inline-flex;align-items:center}
 .album-bracket.rv-r16 .round.rd-r32{display:none}
 .album-bracket.rv-qf .round.rd-r32,.album-bracket.rv-qf .round.rd-r16{display:none}
-.album-bracket.rv-r16{min-width:1330px;grid-template-columns:216px 206px 198px 270px 198px 206px 216px}
-.album-bracket.rv-qf{min-width:1010px;grid-template-columns:206px 198px 270px 198px 206px}
+.album-bracket.rv-r16{min-width:1330px;grid-template-columns:minmax(216px,1fr) minmax(206px,1fr) minmax(198px,1fr) minmax(270px,1.15fr) minmax(198px,1fr) minmax(206px,1fr) minmax(216px,1fr)}
+.album-bracket.rv-qf{min-width:1010px;grid-template-columns:minmax(206px,1fr) minmax(198px,1fr) minmax(270px,1.15fr) minmax(198px,1fr) minmax(206px,1fr)}
 .album-bracket.fold-left.rv-r16,.album-bracket.fold-right.rv-r16{min-width:960px;grid-template-columns:repeat(4,minmax(232px,1fr))}
 .album-bracket.fold-left.rv-qf,.album-bracket.fold-right.rv-qf{min-width:750px;grid-template-columns:repeat(3,minmax(240px,1fr))}
 @media(max-width:760px){
@@ -570,8 +576,18 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
 .stats-card th.sortable{cursor:pointer;user-select:none}
 .stats-card th.sortable:hover{color:#17324d}
 .stats-card tr.out td{opacity:.5}
+.stats-card .num,.ko-ft,.seed{font-variant-numeric:tabular-nums}
+.sc-m{display:none}
+@media(max-width:640px){.sc-m{display:inline-block}.sc-d{display:none}}
 .stats-card td strong{display:inline-flex;align-items:center;gap:7px;font-weight:900;color:#17324d}
 #sec-stats .section-head{margin-bottom:8px}
+.album-bracket.rv-r16 .round{min-height:580px}
+.album-bracket.rv-qf .round{min-height:430px}
+.team-row.pickable{cursor:pointer}
+.team-row.pickable:focus-visible{outline:3px solid #1557c8;outline-offset:-3px;border-radius:10px;z-index:3}
+.btn:focus-visible,.fold-btn:focus-visible,.stats-card th.sortable:focus-visible,.topnav .tn-links button:focus-visible{outline:3px solid #1557c8;outline-offset:2px;border-radius:10px}
+@media (prefers-reduced-motion:reduce){.round .match,.match:hover{transform:none!important}.pk-flip{display:none!important}}
+@media(max-width:760px){.stats-card th,.stats-card td{padding:5px 7px;font-size:12px}.stats-card thead th{font-size:9.5px}}
 </style>
 </head>
 <body>
@@ -2711,8 +2727,8 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
   <div class="tn-links">
     <button type="button" data-to="sec-live">Live</button>
     <button type="button" data-to="sec-bracket">Bracket</button>
-    <button type="button" data-to="sec-groups">Groups</button>
     <button type="button" data-to="sec-stats">Stats</button>
+    <button type="button" data-to="sec-groups">Groups</button>
     <button type="button" data-to="sec-flip">Flipbook</button>
   </div>
 </nav>
@@ -2754,13 +2770,15 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
         <button type="button" data-fold="right" class="fold-btn">Fold right</button>
       </div>
       <div class="scale-ctrl" role="group" aria-label="Bracket size">
+        <button type="button" data-scale="0.3" class="fold-btn sc-m">30%</button>
+        <button type="button" data-scale="0.5" class="fold-btn sc-m">50%</button>
         <button type="button" data-scale="0.7" class="fold-btn">70%</button>
-        <button type="button" data-scale="1" class="fold-btn on">100%</button>
-        <button type="button" data-scale="1.25" class="fold-btn">125%</button>
+        <button type="button" data-scale="1" class="fold-btn sc-d on">100%</button>
+        <button type="button" data-scale="1.25" class="fold-btn sc-d">125%</button>
       </div>
       <div class="view-ctrl" role="group" aria-label="Rounds shown">
-        <button type="button" data-rv="r32" class="fold-btn on">From R32</button>
-        <button type="button" data-rv="r16" class="fold-btn">From R16</button>
+        <button type="button" data-rv="r32" class="fold-btn">From R32</button>
+        <button type="button" data-rv="r16" class="fold-btn on">From R16</button>
         <button type="button" data-rv="qf" class="fold-btn">From QF</button>
       </div>
     </div>
@@ -2777,11 +2795,23 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
       <button class="btn danger" id="clearPicksBtn">🧽 Clear picks</button>
       <button class="btn ghost" id="resetBtn">↩ Reset results</button>
     </div>
-    <div class="statusbar" id="statusbar"><span><span class="dot"></span>Ready</span></div>
+    <div class="statusbar" id="statusbar" role="status" aria-live="polite"><span><span class="dot"></span>Ready</span></div>
   </section>
 
 
 
+
+  <section id="sec-stats">
+    <div class="section-head">
+      <div><h2>Player stats</h2><p class="disc-help" id="playerStatsNote">Goals and assists from Wikipedia; refreshes with the live pull.</p></div>
+      <div class="entry-ctrl"><button class="btn ghost" id="statsRefreshBtn">Refresh player stats</button></div>
+    </div>
+    <div class="table-card stats-card"><div id="playerStatsTable"></div></div>
+    <div class="section-head" style="margin-top:16px">
+      <div><h2>Team stats</h2><p class="disc-help">Group stage plus finished knockout games, computed from the results on this page. Tap a column header to sort; tap again to flip the order.</p></div>
+    </div>
+    <div class="table-card stats-card"><div id="teamStatsTable"></div></div>
+  </section>
 
   <section id="entryMount"></section>
 
@@ -2792,17 +2822,7 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
     <div class="groups-grid" id="groupsGrid"></div>
   </section>
 
-  <section id="sec-stats">
-    <div class="section-head">
-      <div><h2>Team stats</h2><p class="disc-help">Group stage plus finished knockout games, computed from the results on this page. Tap a column header to sort; tap again to flip the order.</p></div>
-    </div>
-    <div class="table-card stats-card"><div id="teamStatsTable"></div></div>
-    <div class="section-head" style="margin-top:16px">
-      <div><h2>Player stats</h2><p class="disc-help" id="playerStatsNote">Goals and assists from Wikipedia; refreshes with the live pull.</p></div>
-      <div class="entry-ctrl"><button class="btn ghost" id="statsRefreshBtn">Refresh player stats</button></div>
-    </div>
-    <div class="table-card stats-card"><div id="playerStatsTable"></div></div>
-  </section>
+
 </div>
 <div class="toast" id="toast"></div>
 
@@ -2929,10 +2949,11 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
     ko: {},
     playerStats: null,
     fold: "none",
-    roundView: "r32",
+    roundView: "r16",
     bracketScale: 1,
     lastPull: null
   };
+  state.bracketScale = rvZoom(state.roundView);
   let computed = null;
 
   const $ = (id) => document.getElementById(id);
@@ -2963,10 +2984,15 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
       if(saved){
         state.disc = saved.disc || {};
         state.simLive = !!saved.simLive;
-        var sc = saved.bracketScale===0.75 ? 0.7 : saved.bracketScale;
-        state.bracketScale = ([0.7,1,1.25].indexOf(sc)>=0 ? sc : 1);
         state.fold = (saved.fold==="left"||saved.fold==="right") ? saved.fold : "none";
-        state.roundView = (saved.roundView==="r16"||saved.roundView==="qf") ? saved.roundView : "r32";
+        if(saved.vdef===2){
+          state.roundView = (["r32","r16","qf"].indexOf(saved.roundView)>=0) ? saved.roundView : "r16";
+          var sc = saved.bracketScale===0.75 ? 0.7 : saved.bracketScale;
+          state.bracketScale = ([0.3,0.5,0.7,1,1.25].indexOf(sc)>=0 ? sc : rvZoom(state.roundView));
+        } else {
+          state.roundView = "r16";
+          state.bracketScale = rvZoom("r16");
+        }
         state.ko = (saved.ko && typeof saved.ko==="object") ? saved.ko : {};
         state.playerStats = (saved.playerStats && saved.playerStats.rows) ? saved.playerStats : null;
         state.lastPull = saved.lastPull || null;
@@ -3211,7 +3237,13 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
     setStatus(_parts);
   }
   function renderAll(){ renderBoard(); renderEntry(); renderLiveBar(); renderStats(); }
-  function persist(){ try{ localStorage.setItem("wc26_refreshable_bracket_state_v2", JSON.stringify({matches:state.matches, picks:state.picks, ko:state.ko, playerStats:state.playerStats, disc:state.disc, simLive:state.simLive, fold:state.fold, roundView:state.roundView, bracketScale:state.bracketScale, lastPull:state.lastPull, savedAt:new Date().toISOString()})); }catch(e){} }
+  function rvZoom(rv){
+    var mob = false;
+    try{ mob = window.matchMedia && window.matchMedia("(max-width:640px)").matches; }catch(e){}
+    var m = mob ? {r32:0.3, r16:0.5, qf:0.7} : {r32:0.7, r16:1, qf:1.25};
+    return m[rv] || (mob ? 0.5 : 1);
+  }
+  function persist(){ try{ localStorage.setItem("wc26_refreshable_bracket_state_v2", JSON.stringify({vdef:2, matches:state.matches, picks:state.picks, ko:state.ko, playerStats:state.playerStats, disc:state.disc, simLive:state.simLive, fold:state.fold, roundView:state.roundView, bracketScale:state.bracketScale, lastPull:state.lastPull, savedAt:new Date().toISOString()})); }catch(e){} }
   function renderLiveBar(){
     var bar=$("liveBar"); if(!bar) return;
     var live=(state.live||[]).filter(function(x){return x.state==="in";});
@@ -3366,7 +3398,8 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
     const name = isTeam ? e.team.name : e.name;
     const abbr = isTeam ? ((e.team.code || String(name||"").slice(0,3)).toUpperCase()) : "";
     const sub = isTeam ? e.sub : e.sub;
-    return `<div class="team-row ${rowCls}" ${isTeam ? `data-match="${escapeHtml(id)}" data-team="${escapeHtml(e.id)}"` : ""}>
+    const locked = isTeam && state.ko && state.ko[id] && state.ko[id].w;
+    return `<div class="team-row ${rowCls}" ${isTeam ? `data-match="${escapeHtml(id)}" data-team="${escapeHtml(e.id)}" role="button" tabindex="0" aria-pressed="${chosen===e.id?'true':'false'}" aria-disabled="${locked?'true':'false'}" aria-label="Pick ${escapeHtml(name)}"` : ""}>
       <span class="seed${seedCls}">${escapeHtml(e.seed || "—")}</span>
       <div class="team-copy"><div class="team-name">${flag}<span class="tn-full">${escapeHtml(name || "TBD")}</span>${isTeam?`<span class="tn-abbr">${escapeHtml(abbr)}</span>`:""}</div><div class="team-sub">${escapeHtml(sub || "")}</div></div>
     </div>`;
@@ -3726,6 +3759,16 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
     document.addEventListener("click", function(e){
       var nv=e.target.closest("[data-to]"); if(nv){ var _to=nv.getAttribute("data-to"); var el=document.getElementById(_to); if(el && el.scrollIntoView) el.scrollIntoView({behavior:"smooth",block:"start"}); if(_to==="sec-live"){ var _pb=document.getElementById("pullLiveBtn"); if(!_pb||!_pb.disabled) pullLive(); } return; }
     });
+    document.addEventListener("keydown", function(e){
+      if(e.key!=="Enter" && e.key!==" ") return;
+      var r = e.target && e.target.closest ? e.target.closest(".team-row.pickable[data-match]") : null;
+      if(!r) return;
+      e.preventDefault();
+      var mid = r.getAttribute("data-match"), tid = r.getAttribute("data-team");
+      pickWinner(mid, tid);
+      var again = document.querySelector('.team-row[data-match="'+mid+'"][data-team="'+tid+'"]');
+      if(again && again.focus) again.focus();
+    });
     $("pullLiveBtn").addEventListener("click", pullLive);
     $("rebuildBtn").addEventListener("click", () => { renderAll(); toast("Bracket rebuilt from current results."); });
     $("saveBtn").addEventListener("click", saveLocal);
@@ -3739,8 +3782,8 @@ button,.btn,.fold-btn,.pf,.topnav .tn-links button,.sim-toggle{touch-action:mani
     if(_fc){ _fc.addEventListener("click", (e)=>{ const b = e.target.closest("[data-fold]"); if(!b) return; state.fold = b.dataset.fold; _fc.querySelectorAll(".fold-btn").forEach(x=>x.classList.toggle("on", x===b)); renderBracket(); if(window.requestAnimationFrame) requestAnimationFrame(drawConnectors); persist(); });
       _fc.querySelectorAll("[data-fold]").forEach(x=>x.classList.toggle("on", x.dataset.fold===(state.fold||"none"))); }
     const _vc = document.querySelector(".view-ctrl");
-    if(_vc){ _vc.addEventListener("click", function(e){ var b=e.target.closest("[data-rv]"); if(!b) return; state.roundView=b.dataset.rv; Array.prototype.forEach.call(_vc.querySelectorAll(".fold-btn"), function(x){ x.classList.toggle("on", x===b); }); renderBracket(); if(window.requestAnimationFrame) requestAnimationFrame(drawConnectors); persist(); });
-      Array.prototype.forEach.call(_vc.querySelectorAll("[data-rv]"), function(x){ x.classList.toggle("on", x.dataset.rv===(state.roundView||"r32")); }); }
+    if(_vc){ _vc.addEventListener("click", function(e){ var b=e.target.closest("[data-rv]"); if(!b) return; state.roundView=b.dataset.rv; state.bracketScale = rvZoom(b.dataset.rv); Array.prototype.forEach.call(_vc.querySelectorAll(".fold-btn"), function(x){ x.classList.toggle("on", x===b); }); var _scw=document.querySelector(".scale-ctrl"); if(_scw){ Array.prototype.forEach.call(_scw.querySelectorAll("[data-scale]"), function(x){ x.classList.toggle("on", parseFloat(x.dataset.scale)===state.bracketScale); }); } renderBracket(); if(window.requestAnimationFrame) requestAnimationFrame(drawConnectors); persist(); });
+      Array.prototype.forEach.call(_vc.querySelectorAll("[data-rv]"), function(x){ x.classList.toggle("on", x.dataset.rv===(state.roundView||"r16")); }); }
     var _sb = $("statsRefreshBtn");
     if(_sb){ _sb.addEventListener("click", function(){ pullStats(true); }); }
     var _tt = $("teamStatsTable");
