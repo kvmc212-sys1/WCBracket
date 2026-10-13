@@ -1,0 +1,38 @@
+name: Validate portfolio demo
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: npm ci
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - run: python -m pip install -r requirements.txt
+      - name: Check both Streamlit entry points
+        run: |
+          python - <<'PY'
+          from streamlit.testing.v1 import AppTest
+          for filename in ['app.py', 'streamlit_app.py']:
+              app = AppTest.from_file(filename).run(timeout=20)
+              assert not app.exception, str(app.exception)
+          PY
+      - run: python scripts/build_static.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dynamic-table-static-site
+          path: dist/

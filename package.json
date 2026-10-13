@@ -1,0 +1,10 @@
+{
+  "name": "the-dynamic-table-checks",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node --test tests/bracket.test.cjs",
+    "test:browser": "node tests/browser.cjs"
+  },
+  "devDependencies": { "playwright": "1.62.1" }
+}
